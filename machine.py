@@ -25,6 +25,7 @@ class Registers:
     ebp: int = 0
     esp: int = 0
     eip: int = 0
+    cmp: int = 0
 
 class Machine:
     def __init__(self) -> None:
@@ -123,6 +124,14 @@ class Machine:
         register_value = getattr(self.registers, register)
         setattr(self.registers, register, register_value + 1)
 
+    def cmp(self, arg1: str, arg2: str) -> None:
+        value1 = self.get_value(arg1)
+        value2 = self.get_value(arg2)
+        if value1 == value2:
+            self.registers.cmp = True
+        else:
+            self.registers.cmp = False
+
     def jmp(self, target: str) -> None:
         if target in self.labels:
             self.registers.eip = self.labels[target] - 1  # -1 because eip will be incremented after this
@@ -132,6 +141,10 @@ class Machine:
                 self.registers.eip = address - 1  # -1 because eip will be incremented after this
             except ValueError:
                 print(f"Error: Invalid jump target: {target}")
+
+    def je(self, target: str) -> None:
+        if self.registers.cmp == True:
+            self.jmp(target)
 
     def push(self, value: str) -> None:
         self.stack.push(self.get_value(value))

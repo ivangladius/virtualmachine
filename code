@@ -1,5 +1,14 @@
 
+var number1 = 4
+var number2 = 7
+
 jmp start
+
+loop:
+   mov ecx, 0 
+inner_loop:
+    inc ecx
+    jmp inner_loop
 
 secret:
     mov number1, -9
@@ -12,9 +21,6 @@ secret:
     jmp done
 
 start:
-    var number1 = 4
-    var number2 = 7
-
     mov eax, number1
     mov ebx, number2 
     add eax, ebx
@@ -23,3 +29,7 @@ start:
 done:
     mov eax, number1
     mov ebx, number2
+    jmp loop
+
+
+    
