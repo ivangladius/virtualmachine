@@ -1,6 +1,33 @@
 # Simple Virtual Machine
 
-This project implements a simple virtual machine that can execute a custom assembly-like language. Here's an example of the supported code:
+This project implements a simple virtual machine that can execute a custom assembly-like language.
+
+## How to Run
+
+To execute a program on this virtual machine, use the following command:
+
+```
+python3 main.py <instruction_file> [--step]
+```
+
+- `<instruction_file>` is the path to your assembly-like code file.
+- The optional `--step` flag enables step-by-step execution mode.
+
+### Step-by-Step Execution
+
+When you use the `--step` option, the program will pause after each instruction, allowing you to see the state of the machine (registers, variables, stack) after every step. This is useful for debugging and understanding the execution flow.
+
+Example:
+
+```
+python3 main.py my_program.asm --step
+```
+
+This will execute `my_program.asm` in step-by-step mode, pausing after each instruction for you to examine the machine state.
+
+## Example Code
+
+Here's an example of the supported code:
 
 ```assembly
 jmp start

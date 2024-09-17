@@ -4,6 +4,11 @@ jmp start
 secret:
     mov number1, -9
     mov number2, -7
+    push number1
+    push number2
+    pop ecx
+    pop edx
+    add ecx edx
     jmp done
 
 start:
