@@ -1,9 +1,11 @@
 class Stack:
     def __init__(self):
         self.mem = []
-        self.size = 0
+        self.size: int = 0
+        self.sp: int = 0
+        self.bp: int = 0
 
-    def push(self, value):
+    def push(self, value: int):
         self.mem.append(value)
         self.size += 1
 

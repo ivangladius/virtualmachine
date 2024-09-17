@@ -1,4 +1,5 @@
 
+
 class Instruction:
     def __init__(self):
         self.result: int = 0

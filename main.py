@@ -1,12 +1,15 @@
-from machine import *
+import sys
+from machine import Machine
+
+if len(sys.argv) < 2:
+    print("Usage: python main.py <instruction_file> [--step]")
+    sys.exit(1)
+file_path = sys.argv[1]
 
 mc = Machine()
-mc.mov('eax', 4)
-mc.mov('ebx', 5)
-mc.add('eax', 'ebx')
-mc.push(9)
-mc.push(8)
-mc.pop('edx')
-mc.pop('edi')
-mc.add('edx', 'edi')
-mc.debug()
+
+if "--step" in sys.argv:
+    mc.enable_stepper()
+
+mc.load_program_from_file(file_path)
+mc.execute_program()

@@ -1,0 +1,20 @@
+
+jmp start
+
+secret:
+    mov number1, -9
+    mov number2, -7
+    jmp done
+
+start:
+    var number1 = 4
+    var number2 = 7
+
+    mov eax, number1
+    mov ebx, number2 
+    add eax, ebx
+    jmp secret
+
+done:
+    mov eax, number1
+    mov ebx, number2
